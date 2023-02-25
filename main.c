@@ -41,7 +41,7 @@ int main(int argc, char** argv) {
             const char* candidate = sigabbrev_np(i);
             if (candidate == NULL) continue;
             if (strcasecmp(sigstr, candidate) == 0) {
-                printf("%d", i);
+                printf("%d\n", i);
                 return 0;
             }
         }
