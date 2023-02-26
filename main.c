@@ -33,9 +33,9 @@ int main(int argc, char** argv) {
         char prefix[] = "SIG";
         size_t prefix_size = sizeof(prefix);
         char* sigstr = arg;
-        if (strncasecmp(prefix, arg, prefix_size) == 0) {
+        if (strncasecmp(prefix, arg, prefix_size - 1) == 0) { // -1 for \0 byte
             // the argument is in form SIGXXX, strip the SIG part
-            sigstr = sigstr + prefix_size;
+            sigstr = sigstr + prefix_size - 1;
         }
         for (int i = 1; i < NSIG; i ++) {
             const char* candidate = sigabbrev_np(i);
