@@ -76,13 +76,17 @@ int main(int argc, char** argv) {
     if (argc == 1) {
         printf("Value\tName\n");
         print_sig_table();
+        return 0;
     } else if (argc == 2) {
         char* arg = argv[1];
         int ret = print_str_signal(arg);
         if (ret < 0) {
             print_sig_not_found(arg);
+        } else {
+            return 0;
         }
     } else {
         fprintf(stderr, "usage: %s <number> or %s <SIGXXX>\n", argv[0], argv[0]);
+        return 1;
     }
 }

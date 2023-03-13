@@ -18,4 +18,8 @@ add_test(NAME unknownDigitSignal COMMAND strsignal -1)
 set_property(TEST unknownDigitSignal PROPERTY PASS_REGULAR_EXPRESSION "${unknownArgRegex}")
 add_test(NAME unknownStrSignal COMMAND strsignal SIGDOESNOTEXIST)
 set_property(TEST unknownStrSignal PROPERTY PASS_REGULAR_EXPRESSION "${unknownArgRegex}")
+add_test(NAME tooManyArgs COMMAND strsignal 1 2 3 4 5)
+set_property(TEST tooManyArgs PROPERTY WILL_FAIL TRUE)
+add_test(NAME passConvertFromDigitToStr COMMAND strsignal 9)
+add_test(NAME passConvertFromStrToDigit COMMAND strsignal SIGKILL)
 
